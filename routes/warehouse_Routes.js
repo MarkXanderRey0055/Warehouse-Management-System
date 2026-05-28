@@ -10,4 +10,6 @@ WarehouseRoutes.post('/shipments', WarehouseController.FetchShipments)
 WarehouseRoutes.put('/updateshipments/:trackingNum', WarehouseController.updateShipments)
 
 
+
+WarehouseRoutes.post('/assign-rider/:trackingNum', WarehouseController.AssignRider)
 export default WarehouseRoutes

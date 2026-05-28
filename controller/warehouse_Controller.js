@@ -51,3 +51,25 @@ export const updateShipments = async (req, res) => {
 
     }
 }
+
+
+export const AssignRider = async (req, res) => {
+    const { trackingNum } = req.params;
+    const { riderId } = req.body;
+
+    try {
+        const assignment = await WarehouseModel.assignRiderToShipment(trackingNum, riderId);
+
+        res.status(200).json({
+            success: true,
+            message: assignment
+        });
+
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({
+            success: false,
+            message: 'Internal Server Error'
+        });
+    }
+};

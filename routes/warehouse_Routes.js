@@ -8,6 +8,8 @@ WarehouseRoutes.use(CheckToken)
 
 WarehouseRoutes.post('/shipments', WarehouseController.FetchShipments)
 WarehouseRoutes.put('/updateshipments/:trackingNum', WarehouseController.updateShipments)
+WarehouseRoutes.get('/location/:trackingNum',WarehouseController.FetchShipmentLocation)
+WarehouseRoutes.put('/location/:trackingNum',WarehouseController.UpdateShipmentLocation)
 
 
 export default WarehouseRoutes

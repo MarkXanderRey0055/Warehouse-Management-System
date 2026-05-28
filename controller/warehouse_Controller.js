@@ -51,3 +51,68 @@ export const updateShipments = async (req, res) => {
 
     }
 }
+
+export const FetchShipmentLocation =
+async (req, res) => {
+
+    const { trackingNum } = req.params
+
+    try {
+
+        const shipment =
+        await WarehouseModel.getShipmentLocation(
+            trackingNum
+        )
+
+        res.status(200).json({
+            success: true,
+            message: shipment
+        })
+
+    } catch (e) {
+
+        console.log(e)
+
+        res.status(500).json({
+            success: false,
+            message: e.message
+        })
+    }
+}
+
+export const UpdateShipmentLocation =
+async (req, res) => {
+
+    const { trackingNum } = req.params
+
+    const {
+        aisle,
+        rack,
+        section
+    } = req.body
+
+    try {
+
+        const shipment =
+        await WarehouseModel.updateShipmentLocation(
+            trackingNum,
+            aisle,
+            rack,
+            section
+        )
+
+        res.status(200).json({
+            success: true,
+            message: shipment
+        })
+
+    } catch (e) {
+
+        console.log(e)
+
+        res.status(500).json({
+            success: false,
+            message: e.message
+        })
+    }
+}
